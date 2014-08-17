@@ -6,12 +6,12 @@ opts_chunk$set(echo=TRUE)
 ```
 
 ## Introduction
-This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals throughout the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
+This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals throughout the day. The data consist of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
 The goal of the assignment is to perform some basic analysis on these data and report them in a reproducible manner.
 
 ## Loading and preprocessing the data
-The data for this assignment can be downloaded from my [github repository](https://github.com/amabelster/RepData_PeerAssessment1/blob/master/activity.zip) as a zip archive. After downloading and unzipping the file to a "data" folder in the working directory, we can proceed to read in the data.
+The data for this assignment can be downloaded directly from this repository as a [zip archive](https://github.com/amabelster/RepData_PeerAssessment1/blob/master/activity.zip). After downloading and unzipping the file to a "data" folder in the working directory, we can proceed to read in the data.
 
 ### Reading in the data
 We first read in the data from the raw csv file included in the zip archive. The missing values in the data are coded as "NA".
@@ -30,10 +30,10 @@ As you can see, the data include three variables:
 
 - `date`: the date on which the measurement was taken in YYYY-MM-DD format,
 
-- `interval`: identifier for the 5-minute interval in which measurement was taken. It stores the value hh:mm as an integer, so for example 00:00 is stored as 0, and 21:15 as 2115.
+- `interval`: identifier for the 5-minute interval in which the measurement was taken. It stores the value hh:mm as an integer, so for example 00:00 is stored as 0, and 21:15 as 2115.
 
 ### Preprocessing the data
-To be able to work with the `date` variable, we have to change its data type from **character** to **Date**:
+To be able to work better with the `date` variable, we have to change its data type from **character** to **Date**:
 ```{r}
 activity$date <- as.Date(activity$date, "%Y-%m-%d")
 ```
@@ -64,7 +64,7 @@ I wasn't able to find a way to create this variable with only the values for hou
 With this, the dataset is ready for the analysis. 
 
 ## What is the mean total number of steps taken per day?
-For this part of the assignment, we will ignore the missing values in the dataset. First we will make a histogram of the total number of steps taken each day and then we will Calculate and report the mean and median total number of steps taken per day.
+For this part of the assignment, we will ignore the missing values in the dataset. First we will make a histogram of the total number of steps taken each day and then we will calculate the mean and median total number of steps taken per day.
 
 To plot a histogram of the total number of steps taken per day we first need to calculate this variable, by adding the values of `steps` grouped by `date`:
 ```{r}
@@ -143,6 +143,8 @@ It seems that the imputation affected mostly the days with zero steps, and now m
 mean(imp.numsteps)
 median(imp.numsteps)
 ```
+
+As expected, the mean increased from 9354 to 9504, while the median remained unaffected.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 For this final part of the assignment we will use the dataset with the filled-in missing values. We will be using the factor variable `daytype` to analyse the activity patterns in weekdays and weekends.
