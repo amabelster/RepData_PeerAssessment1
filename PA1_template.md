@@ -134,21 +134,7 @@ Now we can plot the time series using `ggplot2` and the `scales` library:
 
 ```r
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.1.1
-```
-
-```r
 library(scales)
-```
-
-```
-## Warning: package 'scales' was built under R version 3.1.1
-```
-
-```r
 qplot(time.interval, steps, data = mean.steps, geom = "line", xlab = "Interval", ylab = "Average number of steps", main = "Average number of steps per interval") + scale_x_datetime(breaks = "120 min", labels = date_format("%H:%M"))
 ```
 
